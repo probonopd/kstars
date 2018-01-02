@@ -9,7 +9,7 @@ before_install:
   - sudo apt-get update -qq
     
 install: 
-  - sudo apt-get -y install qt58base qt58tools qt58translations qt58svg libnova-dev libraw-dev wcslib-dev astrometry.net libeigen3-dev libcfitsio3-dev zlib1g-dev libindi-dev gettext
+  - sudo apt-get -y install qt58base qt58tools qt58translations qt58svg libnova-dev libgsl0-dev libraw-dev wcslib-dev astrometry.net libeigen3-dev libcfitsio3-dev zlib1g-dev libindi-dev gettext
   - source /opt/qt*/bin/qt*-env.sh
   - # Precompiled KF5
   - wget -c "https://github.com/chigraph/precompiled-kf5-linux/releases/download/precompiled/kf5-gcc6-linux64-release.tar.xz"
