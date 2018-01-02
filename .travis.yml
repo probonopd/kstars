@@ -5,10 +5,11 @@ dist: trusty
 
 before_install:
   - sudo add-apt-repository ppa:beineri/opt-qt58-trusty -y
+  - sudo add-apt-repository ppa:jochym/indi-devel -y # The official PPA does not have 1.5 for trusty
   - sudo apt-get update -qq
     
 install: 
-  - sudo apt-get -y install qt58base qt58tools qt58translations qt58svg libeigen3-dev libcfitsio3-dev zlib1g-dev libindi-dev gettext
+  - sudo apt-get -y install qt58base qt58tools qt58translations qt58svg libraw-dev wcslib-dev astrometry.net libeigen3-dev libcfitsio3-dev zlib1g-dev libindi-dev gettext
   - source /opt/qt*/bin/qt*-env.sh
   - # Precompiled KF5
   - wget -c "https://github.com/chigraph/precompiled-kf5-linux/releases/download/precompiled/kf5-gcc6-linux64-release.tar.xz"
@@ -23,6 +24,7 @@ install:
   - cd ../..
 
 script:
+  - sed -i -e 's|add_subdirectory(doc)||g' CMakeLists.txt # FIXME; https://github.com/chigraph/precompiled-kf5-linux/issues/6
   - mkdir build ; cd build
   - cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   - make -j$(nproc)
