@@ -22,7 +22,7 @@ install:
   - make && sudo make install
   - cd ../..
 
-script
+script:
   - mkdir build ; cd build
   - cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   - make -j$(nproc)
